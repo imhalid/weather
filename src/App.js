@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import WeatherMap from "./components/WeatherMap";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { usePosition } from "use-position";
 
-function App() {
+//https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
+
+const App = () => {
+  const [weather, setWeather] = useState();
+  const { latitude, longitude } = usePosition();
+
+  const getWeatherData = async (lat, lon) => {
+    const key = process.env.REACT_APP_WEATHER_API_KEY;
+    const lang = navigator.language.split("-")[0];
+    try {
+      const { data } = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&lang=${lang}&units=metric`
+      );
+      setWeather(data);
+    } catch {
+      alert("Error");
+    }
+  };
+
+  useEffect(() => {
+    if (latitude && longitude) {
+      getWeatherData(latitude, longitude);
+    }
+  }, [latitude, longitude]);
+
+  //console.log(latitude, longitude, weather);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>Havadurumu</p>
+      <WeatherMap weather={weather} />
     </div>
   );
-}
+};
 
 export default App;
