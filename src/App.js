@@ -19,7 +19,7 @@ const App = () => {
       );
       setWeather(data);
     } catch {
-      alert("Error");
+      alert("Api Error");
     }
   };
 
