@@ -4,8 +4,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { usePosition } from "use-position";
 
-//https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
-
 const App = () => {
   const [weather, setWeather] = useState();
   const { latitude, longitude } = usePosition();
@@ -29,7 +27,7 @@ const App = () => {
     }
   }, [latitude, longitude]);
 
-  //console.log(latitude, longitude, weather);
+  console.log(weather);
 
   return (
     <div className="App">
