@@ -7,7 +7,7 @@ const WeatherMap = (props) => {
   if (!weather) {
     return <div>Lokasyon izin vermeniz gerekir...</div>;
   }
-  console.log(weather.weather.main);
+  // console.log(weather.weather[0].icon);
   return (
     <div>
       <h1 className="name">Name: {weather.name}</h1>
@@ -18,6 +18,12 @@ const WeatherMap = (props) => {
       <p>Temp: {weather.main.temp} santigrad</p>
       <p>Humidity: {weather.main.humidity} %</p>
       <p>Date: {new Date(weather.dt * 1000).toLocaleDateString()}</p>
+      <img
+        alt="denemem"
+        src={`http://openweathermap.org/img/wn/${
+          weather.weather[0].icon + "@2x"
+        }.png`}
+      />
     </div>
   );
 };

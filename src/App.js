@@ -1,5 +1,6 @@
 import "./App.css";
 import WeatherMap from "./components/WeatherMap";
+import Tailwind from "./Tailwind";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { usePosition } from "use-position";
@@ -31,8 +32,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <p>Havadurumu</p>
-      <WeatherMap weather={weather} />
+      {/* <WeatherMap weather={weather} /> */}
+      <Tailwind weather={weather} />
     </div>
   );
 };
