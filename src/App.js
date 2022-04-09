@@ -1,5 +1,5 @@
 import "./App.css";
-import WeatherMap from "./components/WeatherMap";
+// import WeatherMap from "./components/WeatherMap";
 import Tailwind from "./Tailwind";
 import axios from "axios";
 import { useState, useEffect } from "react";

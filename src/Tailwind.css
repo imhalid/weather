@@ -34,12 +34,12 @@ text-xl
   @apply
   flex
   items-center
-  gap-12
+  gap-8
 }
 
 .dataIcon {
   @apply
-text-9xl
+  w-[150px]
 
 }
 

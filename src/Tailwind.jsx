@@ -1,4 +1,5 @@
 import "./Tailwind.css";
+import { useState } from "react";
 
 const Tailwind = (props) => {
   const { weather } = props;
@@ -31,13 +32,25 @@ const Tailwind = (props) => {
 export default Tailwind;
 
 const Datas = (props) => {
+  const icons = (
+    <img
+      alt="denemem"
+      src={`http://openweathermap.org/img/wn/${props.icon + "@2x"}.png`}
+    />
+  );
+
+  const icon03n =
+    props.icon === "03n" ? (
+      <img alt="clear" src={require(`./images/03dn.png`)} />
+    ) : (
+      icons
+    );
+
+  //yukaridaki ifade yerine daha geniş bir şekilde images içerisindeki resimler eklenecek.
+
   return (
     <div className="datas">
-      <div className="dataIcon"></div>
-      <img
-        alt="denemem"
-        src={`http://openweathermap.org/img/wn/${props.icon + "@2x"}.png`}
-      />
+      <div className="dataIcon">{icon03n}</div>
       <div>
         <div className="dataDate">Today</div>
         <div className="dataTemp">
