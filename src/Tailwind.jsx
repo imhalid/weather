@@ -5,7 +5,7 @@ const Tailwind = (props) => {
   const { weather } = props;
 
   if (!weather) {
-    return <div>Lokasyon izin vermeniz gerekir...</div>;
+    return <div className="card">You need to allow location...</div>;
   }
 
   return (
@@ -13,11 +13,10 @@ const Tailwind = (props) => {
       <div className="card">
         <div className="weatherData">
           <nav>
-            {" "}
             {new Date(weather.dt * 1000).toLocaleDateString()}
             <p className="desc">
-              {weather.weather.map((data) => data.description).join(", ")}
-            </p>{" "}
+              {weather.weather.map((data) => data.main).join(", ")}
+            </p>
           </nav>
         </div>
         <Datas
@@ -31,6 +30,13 @@ const Tailwind = (props) => {
           visibility={weather.visibility * 0.001}
         />
       </div>
+      <footer className="footer">
+        Open source by{" "}
+        <a className="link" href="https://www.halidislam.com/">
+          Halid İslam
+        </a>
+        ©2022 - now
+      </footer>
     </div>
   );
 };
@@ -48,12 +54,13 @@ const Datas = (props) => {
 
   console.log(props.icon);
 
-  var today = new Date(),
-    time = today.getHours();
+  //var today = new Date(),
+  //  time = today.getHours();
 
   // TODO: time changing color will be added
 
-  console.log(time);
+  //console.log(time);
+
   const showIconss = () => {
     switch (props.icon) {
       case "01d":
@@ -77,7 +84,7 @@ const Datas = (props) => {
       case "11d" || "11n":
         return <img alt="clear" src={require(`./images/11dn.png`)} />;
       default:
-        return { icons };
+        return icons;
     }
   };
 
