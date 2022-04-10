@@ -1,13 +1,10 @@
 .container {
-  @apply
-  flex
-  justify-center
-  items-center
-  h-screen
+  @apply grid place-items-center h-screen;
 }
 
 .card {
-    @apply
+  @apply select-none
+    backdrop-blur-sm
     flex
     flex-col
     justify-between
@@ -17,96 +14,108 @@
     h-96
     w-[400px]
     rounded-[40px]
-    bg-gradient-to-b from-[#1CB8F1] to-[#1760EE]
     text-white
+    shadow-xl
+    border-[1px]
+    border-[#2346e2]
+    overflow-hidden;
+}
+
+.card {
+  background: rgba(59, 65, 255, 0.4);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.7px);
+  -webkit-backdrop-filter: blur(5.7px);
+  border: 1px solid rgba(82, 82, 193, 0.3);
 }
 
 .weatherData {
-@apply
-font-extrabold
-text-xl
-
+  @apply mt-0
+  font-extrabold
+  text-xl
+  bg-gray-50/25
+  p-1 pl-3 pr-3
+  relative
+  top-[-16px];
 }
 
+.desc {
+  @apply first-letter:capitalize;
+}
 
+nav {
+  @apply flex
+  items-center
+  justify-between
+  pl-6 pr-6
+  w-[400px]
+  relative
+  h-[42px];
+}
 
 .datas {
-  @apply
-  flex
+  @apply flex
   items-center
-  gap-8
+  gap-8;
+}
+
+.dataValue {
+  @apply text-left;
 }
 
 .dataIcon {
-  @apply
-  w-[150px]
+  @apply w-[150px];
+}
 
+.openIcon {
+  @apply m-6;
 }
 
 .dataDate {
-@apply
-font-medium
+  @apply font-medium;
 }
 
 .tempValue {
-  @apply
-  text-7xl
-  font-bold
-
+  @apply text-7xl
+  font-bold;
 }
 
 .tempProp {
-  @apply
-  text-base
-  align-top
+  @apply text-base
+  align-top;
 }
 
 .dataName {
-@apply
-font-light
-text-slate-200
-}
-
-.divider {
-  
+  @apply font-light
+  text-slate-200;
 }
 
 .status {
-  @apply
-  border-t
+  @apply border-t
   pt-4
   border-red-50/25
   flex
-  gap-10
+  gap-10;
 }
 
 .valueStatus {
-  @apply
-  flex
+  @apply flex
   w-24
   flex-col
-  items-center
+  items-center;
 }
 
 .valueIcon {
-@apply
-font-black
-text-3xl
-mb-2
+  @apply font-black
+  text-3xl
+  mb-2;
 }
 
 .valueValue {
-  @apply
-  font-bold
+  @apply font-bold;
 }
-
 
 .valueName {
-  @apply
-  text-sm
-  font-light
+  @apply text-sm
+  font-light;
 }
-
-
-
-

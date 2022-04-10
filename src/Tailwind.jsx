@@ -1,5 +1,5 @@
 import "./Tailwind.css";
-import { useState } from "react";
+// import { useState } from "react";
 
 const Tailwind = (props) => {
   const { weather } = props;
@@ -12,7 +12,13 @@ const Tailwind = (props) => {
     <div className="container">
       <div className="card">
         <div className="weatherData">
-          {new Date(weather.dt * 1000).toLocaleDateString()}
+          <nav>
+            {" "}
+            {new Date(weather.dt * 1000).toLocaleDateString()}
+            <p className="desc">
+              {weather.weather.map((data) => data.description).join(", ")}
+            </p>{" "}
+          </nav>
         </div>
         <Datas
           temp={weather.main.temp}
@@ -34,24 +40,47 @@ export default Tailwind;
 const Datas = (props) => {
   const icons = (
     <img
-      alt="denemem"
+      className="openIcon"
+      alt="Openweathermap icons"
       src={`http://openweathermap.org/img/wn/${props.icon + "@2x"}.png`}
     />
   );
 
-  const icon03n =
-    props.icon === "03n" ? (
-      <img alt="clear" src={require(`./images/03dn.png`)} />
-    ) : (
-      icons
-    );
+  console.log(props.icon);
+
+  const showIconss = () => {
+    switch (props.icon) {
+      case "01d":
+        return <img alt="clear" src={require(`./images/01d.png`)} />;
+      case "01n":
+        return <img alt="clear" src={require(`./images/01n.png`)} />;
+      case "02d":
+        return <img alt="clear" src={require(`./images/02d.png`)} />;
+      case "02n":
+        return <img alt="clear" src={require(`./images/02n.png`)} />;
+      case "03d" || "03n":
+        return <img alt="clear" src={require(`./images/03dn.png`)} />;
+      case "04d" || "04n":
+        return <img alt="clear" src={require(`./images/04dn.png`)} />;
+      case "09d" || "09n":
+        return <img alt="clear" src={require(`./images/09dn.png`)} />;
+      case "10d":
+        return <img alt="clear" src={require(`./images/10d.png`)} />;
+      case "10n":
+        return <img alt="clear" src={require(`./images/10n.png`)} />;
+      case "11d" || "11n":
+        return <img alt="clear" src={require(`./images/11dn.png`)} />;
+      default:
+        return { icons };
+    }
+  };
 
   //yukaridaki ifade yerine daha geniş bir şekilde images içerisindeki resimler eklenecek.
 
   return (
     <div className="datas">
-      <div className="dataIcon">{icon03n}</div>
-      <div>
+      <div className="dataIcon">{showIconss()}</div>
+      <div className="dataValue">
         <div className="dataDate">Today</div>
         <div className="dataTemp">
           <span className="tempValue">{props.temp}</span>
