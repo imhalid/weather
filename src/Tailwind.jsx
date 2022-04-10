@@ -48,6 +48,12 @@ const Datas = (props) => {
 
   console.log(props.icon);
 
+  var today = new Date(),
+    time = today.getHours();
+
+  // TODO: time changing color will be added
+
+  console.log(time);
   const showIconss = () => {
     switch (props.icon) {
       case "01d":
@@ -74,8 +80,6 @@ const Datas = (props) => {
         return { icons };
     }
   };
-
-  //yukaridaki ifade yerine daha geniş bir şekilde images içerisindeki resimler eklenecek.
 
   return (
     <div className="datas">
