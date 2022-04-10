@@ -15,18 +15,20 @@ const Tailwind = (props) => {
           <nav>
             {new Date(weather.dt * 1000).toLocaleDateString()}
             <p className="desc">
-              {weather.weather.map((data) => data.main).join(", ")}
+              {weather.weather
+                ? weather.weather.map((data) => data.main).join(", ")
+                : ""}
             </p>
           </nav>
         </div>
         <Datas
-          temp={weather.main.temp}
-          icon={weather.weather[0].icon}
+          temp={weather.main ? weather.main.temp : ""}
+          icon={weather.weather ? weather.weather[0].icon : ""}
           name={weather.name}
         />
         <Status
-          humidity={weather.main.humidity}
-          wind={weather.wind.speed}
+          humidity={weather.main ? weather.main.humidity : ""}
+          wind={weather.wind ? weather.wind.speed : ""}
           visibility={weather.visibility * 0.001}
         />
       </div>
@@ -94,7 +96,7 @@ const Datas = (props) => {
       <div className="dataValue">
         <div className="dataDate">Today</div>
         <div className="dataTemp">
-          <span className="tempValue">{props.temp}</span>
+          <span className="tempValue">{props.temp.toFixed(1)}</span>
           <span className="tempProp">℃</span>
         </div>
         <div className="dataName">{props.name}</div>
