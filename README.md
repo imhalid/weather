@@ -14,7 +14,7 @@ I learned a lot of new things in this project. First of all, I understood how AP
 - I replaced the data from the API with other data.
 - I used switch for the first time in a project. and it was very enjoyable :)
 
-##  TODO.
+##  TODO
 
 - [ ] city search feature
 - [ ] better have some effect.
